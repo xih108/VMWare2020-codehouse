@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Layout, Menu, Button} from 'element-react';
 import { NavLink, withRouter} from 'react-router-dom';
- 
+
 class Navigation extends Component{
     constructor(props) {
         super(props);
@@ -9,11 +9,10 @@ class Navigation extends Component{
         this.props = {
             username: "aaaa"
         }
-        
+
     }
 
     onSelect(index) {
-        console.log(this.props.history)
         this.props.history.push({
           pathname: index,
         });
@@ -24,15 +23,15 @@ class Navigation extends Component{
         return (
             <div>
             <div className="line"></div>
-               
-                <Menu  defaultActive="/" className="el-menu-demo" mode="horizontal" onSelect={this.onSelect.bind(this)}>
-                    <Menu.Item index= "/">Home</Menu.Item>
+
+                <Menu className="el-menu-demo" mode="horizontal" onSelect={this.onSelect.bind(this)}>
+                    <Menu.Item index= "/home">Home</Menu.Item>
                     <Menu.Item index= "/myevent">MyEvent</Menu.Item>
                 </Menu>
-                
-            </div>  
+
+            </div>
     );
     }
 }
- 
+
 export default withRouter(Navigation);

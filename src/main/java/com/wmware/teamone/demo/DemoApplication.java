@@ -13,4 +13,3 @@ public class DemoApplication {
 	}
 
 }
-//each time when you tried to run the cakend, right click the run opeiotn

@@ -9,7 +9,7 @@ class Create extends Component {
 
   constructor(props) {
     super(props);
-  
+
     this.state = {
       form: {
         userId:'',
@@ -20,7 +20,7 @@ class Create extends Component {
         description: '',
         category: null,
       }
-      
+
     };
   }
 
@@ -40,37 +40,41 @@ class Create extends Component {
         }).then(()=>{
             this.componentDidMount();
         })
-    }else{
-        axios.put("http://localhost:8181/api/",{
-            id:id,
-            name:this.state.name,
-            link:this.state.link,
-            startTime: this.state.startTime,
-            endTime: this.state.endTime,
-            description: this.state.description,
-            category: this.state.category
-        }).then(()=>{
-            this.componentDidMount();
-        })
+    // }else{
+    //     axios.put("http://localhost:8181/api/",{
+    //         id:id,
+    //         name:this.state.name,
+    //         link:this.state.link,
+    //         startTime: this.state.startTime,
+    //         endTime: this.state.endTime,
+    //         description: this.state.description,
+    //         category: this.state.category
+    //     }).then(()=>{
+    //         this.componentDidMount();
+    //     })
     }
-    this.props.history.push("/create")
+      console.log(this.state)
+    this.props.history.push("/myevent")
   }
-  
+
   onChange(key, value) {
     this.state.form[key] = value;
     const { name, link, startTime, endTime, description, category} = this.state;
-    console.log(this.state)
     this.forceUpdate();
   }
 
-  
+    onClick= () => {
+        this.props.history.push("/myevent")
+    }
+
+
   render() {
     return (
-      <div margin = "10">
-      <Layout.Row type = "flex" className="row-bg" justify="space-around"> 
+      <div>
+      <Layout.Row type = "flex" className="row-bg" justify="space-around">
             <h2>Create Events</h2>
       </Layout.Row>
-      <Layout.Row type = "flex" className="row-bg" justify="space-around"> 
+      <Layout.Row type = "flex" className="row-bg" justify="space-around">
       <Layout.Col span ="12">
       <Form model={this.state.form} labelWidth="80" onSubmit={this.onSubmit.bind(this)}>
         <Form.Item label="Name">
@@ -100,16 +104,16 @@ class Create extends Component {
           <Layout.Row type = "flex" className="row-bg" justify="space-around">
           <Form.Item>
           <Button type="primary" nativeType="submit">Create</Button>
-          <Button>Cancel</Button>
+          <Button onClick = {this.onClick.bind(this)}>Cancel</Button>
         </Form.Item>
          </Layout.Row >
       </Form>
       </Layout.Col>
       </Layout.Row >
-      </div> 
+      </div>
     )
   }
-  
+
 }
 
 export default Create;

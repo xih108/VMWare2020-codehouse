@@ -1,21 +1,24 @@
+//import React from 'react';
+//import ReactDOM from 'react-dom';
+//import App from './App';
+//
+//ReactDOM.render(
+//  <React.StrictMode>
+//    <App />
+//  </React.StrictMode>,
+//  document.getElementById('root')
+//);
+
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-// import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import { BrowserRouter, Route, Switch} from 'react-router-dom';
 import App from './App';
 import './App.css';
-import Edit from './components/Edit';
 import Create from './components/Create';
-import Show from './components/Show';
+
+import MyEvent from "./components/MyEvent";
 
 ReactDOM.render(
-    <Router>
-        <div>
-            <Route exact path='/' component={App} />
-            <Route path='/edit/:id' component={Edit} />
-            <Route path='/create' component={Create} />
-            <Route path='/show/:id' component={Show} />
-        </div>
-    </Router>,
+    <BrowserRouter><App /></BrowserRouter>,
     document.getElementById('root')
 );
